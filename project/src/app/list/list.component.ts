@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-list',
   standalone: true,
@@ -108,24 +107,19 @@ export class ListComponent {
       }]
      }]
    }]
-
-
    onclick(even:any,index:any){ 
+    this.a=0
+    
     this.itemIndex = index
     this.chaildIndex=null
    this.chaildInde=null
      if (this.data[even-1].parentid==null) {
        length=this.list.length
-
-       for (let i = 0; i <= this.listle.length; i++) {
-        this.listle.pop(0)
-      
-      }
        for (let i = 0; i < length; i++) {
+        this.listle.pop(0)
          this.list.pop(0)
          this.list_chaild.pop(0)
          this.list_length.pop(this.data[even-1].children.length)
-         
        }
       if (this.data[even-1].children!=null) {
         for (let i = 0; i < this.data.length; i++) {
@@ -135,8 +129,6 @@ export class ListComponent {
           else {
             this.select=false
           }
-
-          
         }
         this.listle.push(0)
        this.list.push(this.data[even-1].children)
@@ -148,22 +140,27 @@ export class ListComponent {
        this.list.push(even-1)
        this.list.push(this.data[even-1].children)
      } 
+  
  }
  chaild(id:any,name:any,index:any,index2:any,parentid:any){
+ 
   this.chaildIndex=index
   this.chaildInde=index2
   while (true) {
+
     let pointer=index
     for (let i = 0; i < this.list_length.length; i++) {
       this.count+=this.list_length[i] 
+
     }
     for (let i = 0; i <this.list.length; i++) {
       for (let k = 0; k <this.list_length[i]; k++) {
+
       if(this.list[i][k].name==name){
         this.j=i
+
       }        
       }
-      
     }
      if (this.list_length.length==this.a && this.list.length!=(this.j+1)) {
       this.llength=this.list.length
@@ -173,23 +170,27 @@ export class ListComponent {
         this.list_length.pop(this.j+1)
         this.list_chaild.pop(0)
         this.a-=1
-      }
 
+      }
         for (let i = 0; i <this.llength-index2-this.j; i++) {
           this.list_chaild.pop(this.j)
+
+          
         }
-
-
     }
     if (this.list_length.length==this.a && this.list[this.j][pointer].children!=null ) {
       this.listle.push(this.j+1)
+
+      
       this.list.push(this.list[this.j][pointer].children)
       for (let i = 0; i < this.list_chaild.length; i++) {
-        if (this.list_chaild[i].name==0) {
-          this.list_chaild.pop(i)
-          
-        }
+
         
+        if (this.list_chaild[i].name==0) {
+          this.list_chaild.pop(i) 
+
+          
+        }     
       }
       this.list_chaild.push(this.list[this.j][pointer])
       this.list_length.push(this.list[this.j][pointer].children.length)
@@ -198,10 +199,11 @@ export class ListComponent {
     }
     else if (this.list_length.length==this.a ) {
       this.status=true
+
+      
       break
     }
     this.a+=1
-  }
-  
+  }  
  }
 }
