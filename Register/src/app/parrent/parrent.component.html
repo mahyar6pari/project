@@ -1,0 +1,19 @@
+<div class="d-flex flex-row bd-highlight mb-3 w">
+ <div class="widthlist">
+<ul class="list-group ">
+  <li  class="list-group-item witems color">Adduser</li>
+  <li [ngClass]="{'color' :colorstate1}" class="list-group-item witems">confirm mobile</li>
+  <li [ngClass]="{'color' :colorstate2}" class="list-group-item witems">Successfull</li>
+  </ul>
+</div>
+<div class="widthcom">
+  <div *ngIf="!state"><app-adduser></app-adduser></div>
+  <div *ngIf="state && state2"><app-mobile></app-mobile></div>
+  <div *ngIf="state && !state2"><app-successfull></app-successfull></div>
+  <p *ngIf="state3">The mobile number entered is incorrect</p>
+      <button *ngIf="!state && state2"   [disabled]="adduserService.form.invalid" (click)="confirm()" type="button" class="btn btn-primary">confirm</button><div>
+      <button *ngIf="state && state2" [disabled]="mobileService.form.invalid"  (click)="Successfull()" type="button" class="btn btn-primary">Successfull</button>
+      <button *ngIf="state && state2"   (click)="previous()" type="button" class="btn btn-primary">previous</button>
+    </div>
+</div>
+</div>
